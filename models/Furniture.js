@@ -39,7 +39,7 @@ const FurnituresSchema = new mongoose.Schema({
     favorite : {
         type: Boolean
     },
-    commennt : {
+    comment : {
         type: String
     }
 }, { timestamps: true })

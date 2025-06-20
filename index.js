@@ -6,7 +6,7 @@ const express = require('express'),
     furnitureRoutes = require('./routes/furnitureRoutes'), 
     cors = require('cors')
 
-app.use(cors)
+app.use(cors())
 app.use(express.urlencoded({ extended: true }));////REQUERIR Y ACCEDER URLENCODED Y JSON:  Middleware para manejar datos de formulario y JSON
 app.use(express.json());
 
