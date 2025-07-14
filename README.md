@@ -1,6 +1,6 @@
 **APLICACIÓN WEB FURNI**
 
-![Logo de Furni](public/image/logo.png) <!-- <img src="public/image/logo.png" alt="Logo tienda de ropa" width="200"/> -->
+![Logo de Furni](public/image/logoFurni.png) <!-- <img src="public/image/logo.png" alt="Logo tienda de ropa" width="200"/> -->
 
 
 ## ÍNDICE
