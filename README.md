@@ -1,5 +1,6 @@
-**CENTRO DE ESTÉTICA**
-<img src="public/image/logoFurni.png" alt="Logo aplicación para guardar muebles" width="200"/>
+**APLICACIÓN WEB FURNI**
+
+![Logo de Furni](public/image/logo.png) <!-- <img src="public/image/logo.png" alt="Logo tienda de ropa" width="200"/> -->
 
 
 ## ÍNDICE
