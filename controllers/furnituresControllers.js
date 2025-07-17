@@ -1,12 +1,35 @@
 const Furniture = require('../models/Furniture')
 
 const FurnituresControllers = {
+    //* Controlador para traer todos los muebles
+    async getAllFurnitures(req, res) {
+
+        try {
+            const findFurnitures = await Furniture.find();
+            res.json(findFurnitures)
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: `Error getting all the furnitures` })
+        }
+    },
     //*Controlador para buscar por estancia
     async getFurnitures(req, res) {
         const roomToFind = req.params.room
 
         try {
             const findFurnitures = await Furniture.find({ room: roomToFind });
+            res.json(findFurnitures)
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: `Error getting all the furnitures in ${roomToFind}` })
+        }
+    },
+    //*Controlador para buscar por tienda
+    async getStoreFurnitures(req, res) {
+        const storeToFind = req.params.room
+
+        try {
+            const findFurnitures = await Furniture.find({ store: storeToFind });
             res.json(findFurnitures)
         } catch (error) {
             console.error(error);
