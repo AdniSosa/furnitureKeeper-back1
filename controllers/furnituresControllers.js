@@ -26,11 +26,13 @@ const FurnituresControllers = {
     },
     //*Controlador para buscar por tienda
     async getStoreFurnitures(req, res) {
-        const storeToFind = req.params.room
+        const storeToFind = req.params.store
+        //console.log(storeToFind)
 
         try {
             const findFurnitures = await Furniture.find({ store: storeToFind });
             res.json(findFurnitures)
+            
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: `Error getting all the furnitures in ${roomToFind}` })
