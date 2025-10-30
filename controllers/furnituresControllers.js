@@ -32,19 +32,42 @@ const FurnituresControllers = {
         try {
             const findFurnitures = await Furniture.find({ store: storeToFind });
             res.json(findFurnitures)
-            
+
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: `Error getting all the furnitures in ${roomToFind}` })
         }
     },
+    //*Controlador para buscar por nombre
+    async getFurnitureByName(req, res) {
+        const furnitureToFind = req.body.searchInput;
+        const removeAccents = (str) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+        const normalizedSearch = removeAccents(furnitureToFind);
+        try {
+            const findFurniture = await Furniture.find({
+                $or: [
+                    { name: { $regex: normalizedSearch, $options: "i" } },
+                    { store: { $regex: normalizedSearch, $options: "i" } },
+                    { room: { $regex: normalizedSearch, $options: "i" } },
+                ],
+            });
+            res.json(findFurniture);
+
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: `Error finding the furniture: ${furnitureToFind}` })
+        }
+    },
+
     //*Controlador para buscar por id
-    async getFurniture(req, res) {
+    async getFurnitureById(req, res) {
         const furnitureToFind = req.params._id;
 
         try {
-            const findFurniture = await Furniture.findById(furnitureToFind);
+            const findFurniture = await Furniture.findById( furnitureToFind );
             res.json(findFurniture);
+
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: `Error finding the furniture: ${furnitureToFind}` })
@@ -54,9 +77,7 @@ const FurnituresControllers = {
     async getFavorites(req, res) {
 
         try {
-            const favorites = await Furniture.find({favorite : true});
-            console.log(favorites)
-            console.log("Modelo Furniture:", Furniture);
+            const favorites = await Furniture.find({ favorite: true });
             res.json(favorites)
         } catch (error) {
             console.error(error);
